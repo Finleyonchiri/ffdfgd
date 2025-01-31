@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard with Top Navigation</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Transcity&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gravity+Wanders&display=swap">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .main-content {
+            text-align: center;
+            padding: 10px 20px;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+        .home-content, .profile-content, .services-content {
+            font-family: 'Transcity', sans-serif;
+            color: black;
+            margin-top: 0;
+            display: none;
+        }
+        .top-nav {
+            display: flex;
+            justify-content: center;
+            background-color: #1E90FF;
+            padding: 5px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .top-nav a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin: 0 2px;
+        }
+        .top-nav a:hover {
+            background-color: #1C86EE;
+        }
+        .intro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            z-index: 1000;
+            animation: fadeout 3s forwards;
+        }
+        @keyframes fadeout {
+            0% { opacity: 1; }
+            100% { opacity: 0; }
+        }
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(30deg); }
+        }
+        .profile-picture {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border: 2px solid #1E90FF;
+            margin-bottom: 15px;
+        }
+        .profile-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .profile-form input, .profile-form button {
+            padding: 10px;
+            width: 80%;
+            max-width: 400px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .profile-form button {
+            background-color: #1E90FF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .profile-form button:hover {
+            background-color: #1C86EE;
+        }
+        .profile-form input[readonly] {
+            background-color: #e9e9e9;
+        }
+        .profile-form label {
+            font-size: 14px;
+        }
+        .service-list {
+            text-align: left;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .service-item {
+            margin-bottom: 20px;
+        }
+        .service-title {
+            font-weight: bold;
+            font-size: 18px;
+            color: #1E90FF;
+        }
+        .service-description {
+            font-size: 16px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="intro">
+    <div class="wave" style="animation: wave 3s infinite;">Tales Online Server</div>
+</div>
+
+<nav class="top-nav">
+    <a href="#" onclick="showSection('home')">Home</a>
+    <a href="#" onclick="showSection('services')">Services</a>
+    <a href="#" onclick="showSection('notification')">Notification</a>
+    <a href="#" onclick="showSection('profile')">Profile</a>
+    <a href="#" onclick="showSection('about')">About Developer</a>
+</nav>
+
+<div class="main-content">
+    <div id="home" class="home-content">
+        <p>
+            Tales Online is dedicated to providing excellent services to our clients...
+        </p>
+    </div>
+
+    <div id="services" class="services-content">
+        <div class="service-list">
+            <div class="service-item">
+                <div class="service-title">Business Registration</div>
+                <div class="service-description">
+                    Get your business registered quickly and efficiently. We handle the entire process...
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-title">VAT/Rental Returns</div>
+                <div class="service-description">
+                    We assist with the preparation and submission of VAT and rental income returns...
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-title">Motor Vehicle Transfer</div>
+                <div class="service-description">
+                    Simplify the process of transferring vehicle ownership. We handle all necessary paperwork...
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-title">Good Conduct Certificate</div>
+                <div class="service-description">
+                    Obtain a certificate of good conduct for employment or travel purposes...
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-title">HELB Certificate</div>
+                <div class="service-description">
+                    Apply for your Higher Education Loans Board (HELB) certificate with ease...
+                </div>
+            </div>
+            <div class="service-item">
+                <div class="service-title">Visa Application</div>
+                <div class="service-description">
+                    Planning to travel abroad? We assist with visa applications for various countries...
+                </div>
+            </div>
+            <!-- Add other services here similarly -->
+        </div>
+    </div>
+
+    <div id="profile" class="profile-content">
+        <h1>Profile</h1>
+        <!-- Profile content here -->
+    </div>
+</div>
+
+<script>
+    function showSection(sectionId) {
+        document.querySelectorAll('.main-content > div').forEach(section => {
+            section.style.display = 'none';
+        });
+        document.getElementById(sectionId).style.display = 'block';
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+            document.querySelector('.intro').style.display = 'none'; 
+            document.getElementById('home').style.display = 'block';
+        }, 3000);
+    });
+</script>
+
+</body>
+</html>
